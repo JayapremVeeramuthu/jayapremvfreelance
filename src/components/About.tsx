@@ -6,14 +6,15 @@ const comicCSS = `
 .about-comic-container {
   font-family: 'Comic Neue', cursive;
   background: #f5f5f0;
+  padding: 20px;
 }
 
 .about-comic-box {
   max-width: 1200px;
   margin: auto;
-  border: 4px solid black; /* reduce */
+  border: 4px solid black;
   background: #fff;
-  box-shadow: 6px 6px 0 black; /* reduce */
+  box-shadow: 6px 6px 0 black;
   overflow: hidden;
 }
 
@@ -26,11 +27,12 @@ const comicCSS = `
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .about-title {
   font-family: 'Bangers';
-  font-size: 2.8rem; /* slightly reduce */
+  font-size: 2.8rem;
   text-shadow: 2px 2px 0 black;
 }
 
@@ -46,6 +48,20 @@ const comicCSS = `
   font-family: 'Bangers';
 }
 
+/* PROFILE IMAGE */
+.about-img {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 4px solid black;
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 #111;
+}
+
 /* GRID */
 .about-grid {
   display: grid;
@@ -59,8 +75,8 @@ const comicCSS = `
 
 /* VANAKKAM */
 .about-vanakkam {
-  font-family: 'Bangers', cursive;
-  font-size: 4.2rem; /* reduce */
+  font-family: 'Bangers';
+  font-size: 4rem;
   color: #FFE600;
   text-shadow: 3px 3px 0 black;
 }
@@ -71,10 +87,6 @@ const comicCSS = `
   border: 2px solid black;
   padding: 10px;
   font-family: 'Bangers';
-  transition: transform 0.15s ease;
-}
-.about-stat:hover {
-  transform: translate(-2px,-2px); /* lighter */
 }
 
 /* BOTTOM */
@@ -91,10 +103,6 @@ const comicCSS = `
   display:inline-block;
   font-weight: bold;
   background:#d9ff57;
-  transition: transform 0.15s ease;
-}
-.about-tag:hover {
-  transform: translate(-2px,-2px);
 }
 
 /* CTA */
@@ -113,10 +121,61 @@ const comicCSS = `
   background: white;
   font-family: 'Bangers';
   cursor: pointer;
-  transition: transform 0.15s ease;
+  width: fit-content;
 }
-.about-button:hover {
-  transform: translate(-2px,-2px);
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+
+  .about-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-badge {
+    width: 45px;
+    height: 45px;
+  }
+
+  .about-img {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .about-panel {
+    padding: 16px;
+  }
+
+  .about-vanakkam {
+    font-size: 2.5rem;
+  }
+
+  .about-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-vanakkam {
+    font-size: 2rem;
+  }
 }
 `;
 
@@ -125,27 +184,24 @@ export const About = () => {
     <>
       <style>{comicCSS}</style>
 
-      <section className="about-comic-container py-10">
+      <section className="about-comic-container">
         <div className="about-comic-box">
 
           {/* HEADER */}
-        <div className="about-header relative">
+          <div className="about-header">
+            <div>
+              <div className="about-title">ABOUT ME!</div>
+              <small>The origin story of Jayaprem V</small>
+            </div>
 
-  <div>
-    <div className="about-title">ABOUT ME!</div>
-    <small>The origin story of Jayaprem V</small>
-  </div>
+            <div className="about-badge">#01</div>
 
-  <div className="about-badge">#01</div>
-
-  {/* 🔥 IMAGE ADD */}
-  <img 
-    src="/jayapremv.jpg"
-    alt="profile"
-    className="absolute right-4 top-1/2 -translate-y-1/2 w-20 h-20 object-cover border-4 border-black rounded-full shadow-[3px_3px_0px_#111] hover:scale-105 transition"
-  />
-
-</div>
+            <img 
+              src="/jayapremv.jpg"
+              alt="profile"
+              className="about-img"
+            />
+          </div>
 
           {/* TOP */}
           <div className="about-grid">
