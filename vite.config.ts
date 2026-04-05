@@ -14,9 +14,4 @@ export default defineConfig({
     },
   },
   base: "/",
-
-  // 🔥 ADD THIS
-  define: {
-    __DEFINES__: {},
-  },
 });
